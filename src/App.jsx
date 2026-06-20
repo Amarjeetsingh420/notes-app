@@ -1,7 +1,11 @@
+import Notes from "./notes";
+
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      <Notes />
+    </div>
+  );
+};
 
-export default App
+export default App;
