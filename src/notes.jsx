@@ -22,13 +22,18 @@ const Notes = () => {
     setarray([
       ...array,
       {
-        id: Date.now(),
         titleg: title,
         descriptiong: description,
       },
     ]);
     settitle("");
     setdescription("");
+  };
+  const deletee = (c) => {
+    const updatebro = array.filter((item, index) => {
+      return index !== c;
+    });
+    setarray(updatebro);
   };
 
   return (
@@ -85,11 +90,11 @@ const Notes = () => {
         {/* Notes Section */}
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {array.map((note) => (
+          {array.map((note, index) => (
             <div
-              className="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition duration-300"
-              key={note.id}
-            >
+              className="flex justify-between items-center bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition duration-300"
+              key={index}
+            > <div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
                 {note.titleg}
               </h3>
@@ -97,6 +102,8 @@ const Notes = () => {
               <p className="text-gray-600 leading-relaxed">
                 {note.descriptiong}
               </p>
+              </div>
+              <button className="bg-red-600 hover:bg-red-700 text-white cursor-pointer rounded p-1 h-9 w-17" onClick={() => deletee(index)}>delete</button>
             </div>
           ))}
         </div>
